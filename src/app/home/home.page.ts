@@ -8,6 +8,19 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  prenom:string = "";
+
+  person: any = {
+    'nom': "Tata",
+    "url": "assets/ionic.jpg"
+  }
+
+  articles: any = ["pc", "clavier", "écran"];
+
   constructor() {}
 
+  onChange(){
+    this.person.nom = this.prenom;   
+    this.prenom = ""; 
+  }
 }
