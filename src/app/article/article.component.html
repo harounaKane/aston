@@ -1,3 +1,4 @@
-{{ libelle }} 
-{{ prix }} €  
-<ion-button (click)="onLike()">👍</ion-button> {{ like }}
+{{ article.libelle }} 
+{{ article.prix }} €  
+<ion-button (click)="onLike()">{{ likeText }}</ion-button> 
+{{ article.like }}
