@@ -7,21 +7,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-  <app-article/>
-  
-  
- <!-- {{ person.nom }}
-
-  <ion-img [src]="person.url" [alt]="person.url" style="width: 25%;"></ion-img>
-
-  <ion-list *ngFor="let article of articles; let i =  index">
-    <ion-item> {{ article }} </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let art of articles">
+      <app-article [article]="art"/>
+    </ion-item>
   </ion-list>
-
-  <ion-input placeholder="prenom" [(ngModel)]="prenom"></ion-input>
-  <div *ngIf="!prenom" style="color: red;">Prénom obligatoire</div>
-
-  <ion-button (click)="onChange()" > <ion-icon name="add"></ion-icon> </ion-button>-->
-
 </ion-content>

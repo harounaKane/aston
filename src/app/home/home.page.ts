@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Article } from '../model/Article';
+import { ArticleServiceService } from '../services/article-service.service';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +10,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  prenom:string = "";
+  articles!:Article[]
 
-  person: any = {
-    'nom': "Tata",
-    "url": "assets/ionic.jpg"
+  constructor(private articleService:ArticleServiceService) {
+    this.articles = articleService.getArticles();
   }
 
-  articles: any = ["pc", "clavier", "écran"];
 
-  constructor() {}
 
-  onChange(){
-    this.person.nom = this.prenom;   
-    this.prenom = ""; 
-  }
 }
