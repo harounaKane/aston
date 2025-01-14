@@ -1,7 +1,9 @@
 <app-page />
 <ion-content class="ion-padding">
-  <ion-list class="p-3 text-white">
+  <ion-list class="p-3">
     <div>Libellé: {{ article.libelle }}</div>
     <div>Prix: {{ article.prix }}</div>
+    <div>Description: {{ article.description }}</div>
+    <div>Créé le : {{ article.date | date: "dd/MM/YYYY" }}</div>
   </ion-list>
 </ion-content>

@@ -4,12 +4,13 @@ import { ActivatedRoute, RouterLinkActive } from '@angular/router';
 import { Article } from '../model/Article';
 import { IonicModule } from '@ionic/angular';
 import { PageComponent } from '../page/page.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
   styleUrls: ['./article-detail.component.scss'],
-  imports: [IonicModule, PageComponent]
+  imports: [IonicModule, PageComponent, DatePipe]
 })
 export class ArticleDetailComponent  implements OnInit {
 

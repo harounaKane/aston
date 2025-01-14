@@ -1,9 +1,33 @@
 <app-page />
 
 <ion-content class="ion-padding">
-  <ion-list>
-    <ion-item *ngFor="let art of articles">
-      <app-article [article]="art"/>
+    <ion-item>   
+      <ion-grid>
+        <ion-row>
+          <ion-card *ngFor="let art of articles" class="p-4">
+            <ion-col size="3">
+              <app-article [article]="art"/>
+              <ion-icon name="trash"></ion-icon>
+              <ion-icon name="pencil-outline"></ion-icon>
+              <ion-icon name="happy"></ion-icon>
+            </ion-col>
+          </ion-card>
+        </ion-row>
+      </ion-grid>
     </ion-item>
-  </ion-list>
+
+  <ion-button (click)="onAddArt()"> <ion-icon name="add"> </ion-icon> Ajouter </ion-button>
+
+  <ion-card class="addArt" [ngClass]="{'d-none': isFormAdd}">
+    <h3>Ajouter un nouvel article</h3>
+    <form class="" #form="ngForm" (ngSubmit)="ajouter(form)">
+      <ion-input ngModel placeholder="Libellé" fill="solid" name="libelle" />
+      <ion-input ngModel placeholder="Prix" fill="solid" name="prix" />
+      <ion-textarea ngModel name="description" placeholder="Description"></ion-textarea>
+  
+      <ion-button type="submit">Add</ion-button>
+      <ion-button color="danger" (click)="onAddArt()"><ion-icon name="backspace"></ion-icon></ion-button>
+    </form>
+  </ion-card>
+
 </ion-content>
