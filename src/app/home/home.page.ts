@@ -14,8 +14,17 @@ export class HomePage {
   articles!:Article[]
   isFormAdd:boolean = true;
 
+  artEdit!:Article;
+
   constructor(private articleService:ArticleServiceService) {
     this.articles = articleService.getArticles();
+  }
+
+  edit(art:Article){
+    this.onAddArt();
+    console.log(art);
+    this.artEdit = art;
+    
   }
 
   onAddArt(){
