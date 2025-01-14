@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { ArticleComponent } from "../article/article.component";
+import { PageComponent } from '../page/page.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ArticleComponent } from "../article/article.component";
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    ArticleComponent
+    ArticleComponent,
+    PageComponent
 ],
   declarations: [HomePage]
 })

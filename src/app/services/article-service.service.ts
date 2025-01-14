@@ -16,4 +16,12 @@ export class ArticleServiceService {
   getArticles(){
     return this.articles;
   }
+
+  artById(id:number):Article{
+    const article = this.articles.find(art => art.id == id);
+
+    if( !article ) throw new Error(id + " n'existe pas comme identifiant");
+
+    return article;
+  }
 }
