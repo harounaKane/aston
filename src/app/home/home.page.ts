@@ -14,7 +14,7 @@ export class HomePage {
   articles!:Article[]
   isFormAdd:boolean = true;
 
-  artEdit!:Article;
+  artEdit:Article = new Article(0, "", 0, "", new Date, 0);
 
   constructor(private articleService:ArticleServiceService) {
     this.articles = articleService.getArticles();
@@ -22,9 +22,7 @@ export class HomePage {
 
   edit(art:Article){
     this.onAddArt();
-    console.log(art);
     this.artEdit = art;
-    
   }
 
   onAddArt(){
@@ -34,7 +32,22 @@ export class HomePage {
   ajouter(form: NgForm){
     this.articleService.ajouter(form);
     
+    this.artEdit = new Article(0, "", 0, "", new Date, 0);
     this.onAddArt();
+  }
+
+  delete(art:Article){
+    this.articleService.delete(art);
+
+    this.articles = this.articleService.getArticles();
+  }
+
+  like(art:Article){
+    if( art.like ){
+      art.like--;
+    }else{
+      art.like++;
+    }    
   }
 
 

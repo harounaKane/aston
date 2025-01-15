@@ -4,12 +4,12 @@
     <ion-item>   
       <ion-grid>
         <ion-row>
-          <ion-card *ngFor="let art of articles" class="p-4">
+          <ion-card *ngFor="let art of articles" class="p-4" [ngClass]="{'liked': art.like}">
             <ion-col size="3">
-              <app-article [article]="art"/>
-              <ion-icon name="trash"></ion-icon>
+              <h3><app-article [article]="art"/></h3>
+              <ion-icon name="trash" (click)="delete(art)"></ion-icon>
               <ion-icon name="pencil-outline" (click)="edit(art)"></ion-icon>
-              <ion-icon name="happy"></ion-icon>
+              <ion-icon name="happy" (click)="like(art)"></ion-icon>
             </ion-col>
           </ion-card>
         </ion-row>
@@ -21,9 +21,10 @@
   <ion-card class="addArt" [ngClass]="{'d-none': isFormAdd}">
     <h3>Ajouter un nouvel article</h3>
     <form class="" #form="ngForm" (ngSubmit)="ajouter(form)">
-      <ion-input [(ngModel)]="artEdit.libelle" ngModel placeholder="Libellé" fill="solid" name="libelle" />
-      <ion-input [(ngModel)]="artEdit.prix" ngModel placeholder="Prix" fill="solid" name="prix" />
-      <ion-textarea [(ngModel)]="artEdit.description" ngModel name="description" placeholder="Description"></ion-textarea>
+      <ion-input hidden [(ngModel)]="artEdit.id" placeholder="id" fill="solid" name="id" />
+      <ion-input [(ngModel)]="artEdit.libelle" placeholder="Libellé" fill="solid" name="libelle" />
+      <ion-input [(ngModel)]="artEdit.prix" placeholder="Prix" fill="solid" name="prix" />
+      <ion-textarea [(ngModel)]="artEdit.description" name="description" placeholder="Description"></ion-textarea>
   
       <ion-button type="submit">Add</ion-button>
       <ion-button color="danger" (click)="onAddArt()"><ion-icon name="backspace"></ion-icon></ion-button>

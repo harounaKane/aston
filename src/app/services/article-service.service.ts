@@ -9,16 +9,35 @@ export class ArticleServiceService {
 
   private articles:Article[] = [
     new Article(10, "PC", 950, "Description sur le PC", new Date, 0),
-    new Article(12, "Clavier", 50, "Description du clavier ...", new Date, 0)
+    new Article(12, "Clavier", 50, "Description du clavier ...", new Date, 1),
+    new Article(17, "Ecran", 350, "Description de l'écran ...", new Date, 0)
   ];
 
   constructor() { }
 
-  ajouter(form: NgForm){
-    const id = this.articles.length + 1;
-    let art = new Article(id, form.value.libelle, form.value.prix, form.value.description, new Date, 0);
+  delete(artToDelete: Article){
+    this.articles = this.articles.filter(artBis => artBis.id !== artToDelete.id );
+  }
 
-    this.articles.push( art );
+  ajouter(form: NgForm){
+    
+    if( form.value.id ){
+      let oldArt = this.artById(form.value.id);
+      oldArt.libelle = form.value.libelle;
+      oldArt.prix = form.value.prix;
+
+    }else{
+      const id = this.articles.length ? 
+                      this.articles[this.articles.length - 1].id + 1 
+                      : 1;
+
+      let art = new Article(id, form.value.libelle, form.value.prix, form.value.description, new Date, 0);
+  
+      this.articles.push( art );
+
+      form.reset();
+    }
+
   }
 
   getArticles(){
