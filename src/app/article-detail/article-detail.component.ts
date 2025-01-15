@@ -10,7 +10,7 @@ import { DatePipe } from '@angular/common';
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
   styleUrls: ['./article-detail.component.scss'],
-  imports: [IonicModule, PageComponent, DatePipe]
+  imports: [IonicModule, DatePipe]
 })
 export class ArticleDetailComponent  implements OnInit {
 
