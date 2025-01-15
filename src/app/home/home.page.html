@@ -1,7 +1,7 @@
 
 
-<ion-content class="ion-padding">
-    <ion-item>   
+<ion-content [fullscreen]="true" class="ion-padding">
+    <ion-list>   
       <ion-grid>
         <ion-row>
           <ion-card *ngFor="let art of articles" class="p-4" [ngClass]="{'liked': art.like}">
@@ -14,7 +14,7 @@
           </ion-card>
         </ion-row>
       </ion-grid>
-    </ion-item>
+    </ion-list>
 
   <ion-button (click)="onAddArt()"> <ion-icon name="add"> </ion-icon> Ajouter </ion-button>
 
