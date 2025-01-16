@@ -1,20 +1,20 @@
 
 
 <ion-content [fullscreen]="true" class="ion-padding">
-    <ion-list>   
-      <ion-grid>
+  <ion-list>   
+    <ion-grid>
+      <ion-card *ngFor="let art of articles" class="p-4" [ngClass]="{'liked': art.like}">
         <ion-row>
-          <ion-card *ngFor="let art of articles" class="p-4" [ngClass]="{'liked': art.like}">
-            <ion-col size="3">
-              <h3><app-article [article]="art"/></h3>
-              <ion-icon name="trash" (click)="delete(art)"></ion-icon>
-              <ion-icon name="pencil-outline" (click)="edit(art)"></ion-icon>
-              <ion-icon name="happy" (click)="like(art)"></ion-icon>
-            </ion-col>
-          </ion-card>
+          <ion-col>
+            <h3><app-article [article]="art"/></h3>
+            <ion-icon name="trash" (click)="delete(art)"></ion-icon>
+            <ion-icon name="pencil-outline" (click)="edit(art)"></ion-icon>
+            <ion-icon name="happy" (click)="like(art)"></ion-icon>
+          </ion-col>
         </ion-row>
-      </ion-grid>
-    </ion-list>
+      </ion-card>
+    </ion-grid>
+  </ion-list>
 
   <ion-button (click)="onAddArt()"> <ion-icon name="add"> </ion-icon> Ajouter </ion-button>
 

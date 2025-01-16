@@ -6,7 +6,7 @@ import { IonicModule, MenuController } from '@ionic/angular';
   selector: 'app-page',
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss'],
-  imports: [IonicModule]
+  imports: [IonicModule, RouterLink]
 })
 export class PageComponent  implements OnInit {
 

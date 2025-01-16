@@ -13,7 +13,20 @@ export class ArticleServiceService {
     new Article(17, "Ecran", 350, "Description de l'écran ...", new Date, 0)
   ];
 
-  constructor() { }
+  constructor() {  }
+
+  saveArticle(){
+    localStorage.setItem("articles", JSON.stringify(this.articles));
+  }
+
+  
+  getArticles(){
+    const ARTS = localStorage.getItem("articles")
+
+    this.articles = ARTS ? JSON.parse(ARTS) as Article[] : [];
+
+    return this.articles;
+  }
 
   delete(artToDelete: Article){
     this.articles = this.articles.filter(artBis => artBis.id !== artToDelete.id );
@@ -38,10 +51,7 @@ export class ArticleServiceService {
       form.reset();
     }
 
-  }
-
-  getArticles(){
-    return this.articles;
+    this.saveArticle();
   }
 
   artById(id:number):Article{
