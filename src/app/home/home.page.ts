@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Article } from '../model/Article';
 import { ArticleServiceService } from '../services/article-service.service';
 import { NgForm } from '@angular/forms';
+import { Categorie } from '../model/Categorie';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomePage {
   articles!:Article[]
   isFormAdd:boolean = true;
 
-  artEdit:Article = new Article(0, "", 0, "", new Date, 0);
+  artEdit:Article = new Article(0, "", 0, new Categorie(0, ""), "", new Date, 0);
 
   constructor(private articleService:ArticleServiceService) {
     this.articles = articleService.getArticles();
@@ -30,9 +31,9 @@ export class HomePage {
   }
 
   ajouter(form: NgForm){
-    this.articleService.ajouter(form);
+   // this.articleService.ajouter(form);
     
-    this.artEdit = new Article(0, "", 0, "", new Date, 0);
+    this.artEdit = new Article(0, "", 0, new Categorie(0, ""), "", new Date, 0);
     this.onAddArt();
   }
 
@@ -48,6 +49,8 @@ export class HomePage {
     }else{
       art.like++;
     }    
+
+    this.articleService.saveArticle();
   }
 
 

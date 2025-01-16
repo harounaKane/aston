@@ -5,5 +5,7 @@
     <div>Prix: {{ article.prix }}</div>
     <div>Description: {{ article.description }}</div>
     <div>Créé le : {{ article.date | date: "dd/MM/YYYY" }}</div>
+    
+    <div *ngIf="article.origine">Origine de : {{ article.origine }}</div>
   </ion-list>
 </ion-content>

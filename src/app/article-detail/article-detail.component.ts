@@ -3,14 +3,13 @@ import { ArticleServiceService } from '../services/article-service.service';
 import { ActivatedRoute, RouterLinkActive } from '@angular/router';
 import { Article } from '../model/Article';
 import { IonicModule } from '@ionic/angular';
-import { PageComponent } from '../page/page.component';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
   styleUrls: ['./article-detail.component.scss'],
-  imports: [IonicModule, DatePipe]
+  imports: [IonicModule, DatePipe, CommonModule]
 })
 export class ArticleDetailComponent  implements OnInit {
 
