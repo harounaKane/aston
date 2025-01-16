@@ -13,12 +13,17 @@ import { Categorie } from '../model/Categorie';
 export class HomePage {
 
   articles!:Article[]
+  categories!:Categorie[];
+
+  categorie!:number;
+
   isFormAdd:boolean = true;
 
   artEdit:Article = new Article(0, "", 0, new Categorie(0, ""), "", new Date, 0);
 
   constructor(private articleService:ArticleServiceService) {
     this.articles = articleService.getArticles();
+    this.categories = articleService.getCategories();
   }
 
   edit(art:Article){
@@ -31,7 +36,8 @@ export class HomePage {
   }
 
   ajouter(form: NgForm){
-   // this.articleService.ajouter(form);
+    
+   this.articleService.ajouter(form);
     
     this.artEdit = new Article(0, "", 0, new Categorie(0, ""), "", new Date, 0);
     this.onAddArt();
